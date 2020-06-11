@@ -1,0 +1,153 @@
+<%- include('partials/header') %>
+<script src="/js/budget.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+
+
+
+    <div class="container ">
+        <div class="section">
+
+            <div class="row">
+                <h1>AS & FUND RECEIVED</h1>
+            </div>
+            <!-- <p id = "error-text">         dbsjdsj</p> -->
+            <div class="row">
+                <form class="col s12" method="POST" action="/budget" onsubmit="return ValidationEvent();">
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6" style="padding-left: 0;">
+                            <select class="check step" id="step1" name="chosenYear">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="2015">2015-2016</option>
+                                <option value="2016">2016-2017</option>
+                                <option value="2017">2017-2018</option>
+                                <option value="2018">2018-2019</option>
+                                <option value="2019">2019-2020</option>
+                                <option value="2020">2020-2021</option>
+                                <option value="2021">2021-2022</option>
+                                <option value="2022">2022-2023</option>
+
+
+
+                            </select>
+                            <label>Financial Year</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6" style="padding-left: 0;">
+
+                            <select class="step checkMonth" id="step2" name="chosenMonth" disabled>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+
+
+
+                            </select>
+                            <label>Month</label>
+                        </div>
+                        <div class="row">
+                            <div class="col l3 m4 s12">
+                                <div id="form1" class=" input-field col s12" style="padding-left: 0;padding-top: 7px;">
+                                   
+                                    <input type="text" id="chosenUnit" class="autocomplete" name = "chosenUnit">
+                                    <label for="form1">Select Unit</label>
+                                </div>
+                            </div>
+                            <div class="col s12 l3 m4">
+                                <div class=" s12">
+                                    <label for="amount">Amount in Rs.</label>
+
+                                    <input id="amountBudget" type="number" class="validate" name="amountBudget">
+                                </div>
+                            </div>
+                            <div class="col s12 l3 m4" style="padding-top: 40px;">
+                                <div class="switch">
+                                    <label>
+                                        Part
+                                        <input id="checker" type="checkbox" name="full">
+
+                                        <span class="lever"></span>
+                                        Full
+                                    </label>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 l3 m4" style="padding-top: 7px;">
+                                <select class="" id="source" name="source">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="STATE PLAN">STATE PLAN</option>
+                                    <option value="ICAR">ICAR</option>
+                                    <option value="RKVY">RKVY</option>
+                                    <option value="RIDF">RIDF</option>
+                                    <option value="NABARD">NABARD</option>
+                                    <option value="others">others</option>
+
+                                </select>
+                                <label>Source</label>
+                            </div>
+
+                            <div class=" col s12 l3 m4">
+                                <label for="order">Order No</label>
+
+                                <input id="orderNo" type="text" class="step validate" name="orderNo">
+                            </div>
+                            <div class="input-field col s12 l3 m4" style="padding-top: 7px;">
+                                <select class="" id="" name="mode">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="Cheque">Cheque</option>
+                                    <option value="Bank Transfer">Bank Transfer</option>
+                                </select>
+                                <label>Mode Of Transfer</label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col l3">
+                                <input id="step3" type="text" class="datepicker step" disabled name="date">
+                                <label for="">Date</label>
+                            </div>
+                        </div>
+
+
+                        <button class="btn waves-effect waves-light submitbutton" id="form-submit"
+                        type="submit">Next</button>
+
+                    </div>
+
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="page-footer" style="background-color:#7986cb;">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Rosh
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

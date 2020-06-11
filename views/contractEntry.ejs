@@ -1,0 +1,191 @@
+<%- include('partials/header') %>
+<script src="/js/contractEntry.js"></script>
+<link rel="stylesheet" href="/css/contractEntry.css">
+</head>
+
+<body>
+    <div class="container" id="page-container">
+
+
+        <div class="section">
+            <h6 style="display: inline;">Project Name :</h6>
+            <p ><%= projectName%></p>
+            <h6 >Contract Individual/Company :</h6>
+            <p ><%=contractor.contractorName%></p>
+
+            <div class="row">
+
+                <div class="input-field col s6 l3 m4">
+                    <select name="finalOrPart" id="finalOrPart">
+                        <option value="" selected>Choose rate</option>
+                        <option value="final">Final</option>
+                        <option value="part">Part</option>
+
+
+                    </select>
+                    <label>Type of Bill</label>
+                </div>
+
+                <div class="input-field col s6 l3 m4">
+                    <select name="ccNumber" id="ccNumber">
+                        <option value="" selected>Choose rate</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+
+                    </select>
+                    <label>CC Number</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6 l3 m4">
+                    <input id="billAmount" placeholder="" name="billAmount" type="text" class="validate">
+                    <label for="billAmount">Bill Amount(Since last) in Rs.</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col l6 m12 s 12">
+                    <h5>(A) : Statutory Recoveries</h5>
+                    <div class="row">
+                        <div class="input-field col s12 l6 m6">
+                            <select name="ItCollected" id="ItCollected">
+                                <option value="" selected>Choose rate</option>
+                                <option value="0.75">0.75 %</option>
+                                <option value="1">1 %</option>
+                                <option value="1.5">1.5 %</option>
+                                <option value="2">2 %</option>
+
+
+                            </select>
+                            <label>IT TDS Rate</label>
+                        </div>
+                        <div class="input-field col s12 l6 m6">
+                            <input id="tdsAmount" placeholder="" name="tdsAmount" type="number" step="any" readonly>
+                            <label for="tdsAmount">TDS Amount</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 l6 m6">
+                            <select name="kcwwf" id="kcwwf" disabled>
+                                <option value="1" selected>1 %</option>
+
+                            </select>
+                            <label>KCWWF</label>
+                        </div>
+                        <div class="input-field col s12 l6 m6">
+                            <input id="kcwwfAmount" placeholder="" name="kcwwfAmount" type="number" step="any" readonly>
+                            <label for="kcwwfAmount">KCWWF Amount</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 l6 m6">
+                            <select name="gst" id="gst" disabled>
+                                <option value="2" selected>2 %</option>
+
+                            </select>
+                            <label>GST</label>
+                        </div>
+                        <div class="input-field col s12 l6 m6">
+                            <input id="gstAmount" placeholder="" name="gstAmount" type="number" step="any" readonly>
+                            <label for="gstAmount">GST Amount</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 l6 m6">
+
+                            <input id="pgdAmount" placeholder="" name=pgdAmount" type="number" class="validate">
+                            <label for="pgdAmount">PGD (Amount to be given)</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 l6 m6">
+                            <input id="subtotalA" placeholder="" name="subtotalA" type="number" step="any" readonly>
+                            <label for="subtotalA">Subtotal (A)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l6 m12 s12">
+                    <h5>(B) : Other Recoveries(If Any)</h5>
+                    <div class="row">
+                        <div class="input-field col s12 l6 m6">
+                            <input id="waterElectricity" placeholder="" name="waterElectricity" type="number"
+                                step="any">
+                            <label for="waterElectricity">Water/Electricity Charges</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 l6 m6">
+                            <input id="fine" placeholder="" name="fine" type="number" step="any">
+                            <label for="fine">Fine</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 l6 m6">
+                            <input id="subtotalB" placeholder="" name="subtotalB" type="number" step="any" readonly>
+                            <label for="subtotalB">Subtotal (B)</label>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <h5>Amount Payable to Contractor : </h5>
+
+
+                <div class="input-field col s12 l3 m4" style="display: inline;">
+                    <input id="amountPayable" placeholder="" name="amountPayable" type="number" step="any" readonly>
+                    <label for="amountPayable">Net Amount</label>
+                </div>
+                <div class="input-field col s12 l3 m4">
+                    <select name="gstChoose" id="gstChoose">
+                        <option value="0" selected>0 %</option>
+                        <option value="12">12 %</option>
+
+                    </select>
+                    <label>GST (if applicable)</label>
+                </div>
+
+
+                <div class="input-field col s12 l3 m4">
+                    <input id="gstAmount2" placeholder="" name="gstAmount2" type="number" step="any" readonly>
+                    <label for="gstAmount2">GST Amount</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <h5>Total</h5>
+                <div class="input-field col s12 l3 m4" style="display: inline;">
+                    <input id="totalFinal" placeholder="" name="totalFinal" type="number" step="any" readonly>
+                    <label for="totalFinal">Amount</label>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <footer class="page-footer" id="footer" style="background-color:#7986cb;">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Rosh
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

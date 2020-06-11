@@ -1,0 +1,209 @@
+<%- include('partials/header') %>
+<script src="/js/adCharges.js"></script>
+<link rel="stylesheet" href="/css/adCharges.css">
+</head>
+
+<body>
+    <div class="container" id="page-container">
+
+        <div class="section">
+
+            <div class="row">
+                <h5>Advertisement Charges</h3>
+
+            </div>
+            <span id='variableJSON' hidden>
+                <%= JSON.stringify(bill); %>
+            </span>
+            <form id = "form1" action="/projects/<%=projectId%>/bills/ad" method="POST">
+                <div class="row">
+                 
+
+                    <div class="input-field col s6 l3 m4">
+                        <input id="agencyName" placeholder="" name="agencyName" type="text" class="validate">
+                        <label for="agencyName">Agency Name</label>
+                    </div>
+                    <div class="input-field col s6 l3 m4">
+                        <input id="panNumber" placeholder="" name="panNumber" type="text" class="validate">
+                        <label for="panNumber">PAN Number</label>
+                    </div>
+                    <div class="input-field col s6 l3 m4">
+                        <input id="gstNumber" placeholder="" name="gstNumber" type="text" class="validate">
+                        <label for="gstNumber">GST Number</label>
+                    </div>
+
+
+
+                </div>
+
+                <div>
+                    <h6>1st Tender</h6>
+                    <div class="row">
+                        <div class="col  s6 l3 m4">
+                            <input type="text" class="datepicker" id="tenderDate" name="tenderDate">
+                            <label for="">Date</label>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="input-field col s6 l3 m4">
+                            <input id="tenderAmount" placeholder="" name="tenderAmount" type="number" class="validate">
+                            <label for="tenderAmount">Amount</label>
+                        </div>
+                        <div class="input-field col s6 l3 m4">
+                            <select name="tenderItCollected" id="tenderItCollected">
+                                <option value="" selected>Choose rate</option>
+                                <option value="0.75">0.75 %</option>
+                                <option value="1">1 %</option>
+                                <option value="1.5">1.5 %</option>
+                                <option value="2">2 %</option>
+
+
+                            </select>
+                            <label>TDS rate</label>
+                        </div>
+                        <div class="input-field col s6 l3 m4">
+                            <input id="tenderItAmount" placeholder="" name="tenderItAmount" type="number" step="any"
+                                class="validate" readonly>
+                            <label for="tenderItAmount">Payable Tax</label>
+                        </div>
+                        <div class="input-field col s6 l3 m4">
+                            <input id="tenderNetPayment" placeholder="" name="tenderNetPayment" type="number" step="any"
+                                class="validate" readonly>
+                            <label for="tenderNetPayment">Net Amount</label>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="input-field col s12">
+                        <textarea id="remarksTender" placeholder="" class="materialize-textarea" name="remarksTender"
+                            data-length="120"></textarea>
+                        <label for="remarksTender">Remarks</label>
+                    </div>
+
+
+                </div>
+                <div>
+                    <h6>Re-Tender(If Any)</h6>
+                    <div class="row">
+                        <div class="col  s6 l3 m4">
+
+                            <input type="text" class="datepicker" id="tenderDate" name="retenderDate">
+                            <label for="">Date</label>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="input-field col s6 l3 m4">
+                            <input id="retenderAmount" placeholder="" name="retenderAmount" type="number"
+                                class="validate">
+                            <label for="retenderAmount">Amount</label>
+                        </div>
+                        <div class="input-field col s6 l3 m4">
+                            <select name="retenderItCollected" id="retenderItCollected">
+                                <option value="" selected>Choose rate</option>
+                                <option value="0.75">0.75 %</option>
+                                <option value="1">1 %</option>
+                                <option value="1.5">1.5 %</option>
+                                <option value="2">2 %</option>
+
+
+                            </select>
+                            <label>TDS Rate</label>
+                        </div>
+                        <div class="input-field col s6 l3 m4">
+                            <input id="retenderItAmount" placeholder="" name="retenderItAmount" type="number" step="any"
+                                 readonly>
+                            <label for="retenderItAmount">Payable Tax</label>
+                        </div>
+                        <div class="input-field col s6 l3 m4">
+                            <input id="retenderNetPayment" placeholder="" name="retenderNetPayment" type="number"
+                                step="any"  readonly>
+                            <label for="retenderNetPayment">Net Amount</label>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="input-field col s12">
+                                <textarea id="remarksRetender" placeholder="" class="materialize-textarea" name="remarksRetender"
+                                    data-length="120"></textarea>
+                                <label for="remarksRetender">Remarks</label>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+                <button class="btn waves-effect waves-light" type="submit" name="action">Save
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+
+            <div>
+                <table class="highlight">
+                    <thead>
+                        <tr>
+
+                            <th style="text-align: center;">Agency Name</th>
+                            <th style="text-align: center;">PAN Number</th>
+                            <th style="text-align: center;">GST Number</th>
+                            <th style="text-align: center;">Tender Amount</th>
+                            <th style="text-align: center;">ReTender Amount</th>
+                            <th style="text-align: center;">Edit</th>
+                            <th style="text-align: center;">Remove</th>
+
+
+
+
+
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody class="">
+                        <% adBills.forEach(function(adBill){ %>
+                        <tr>
+                            <td style="text-align: center;"><%=adBill.agencyName%></td>
+                            <td style="text-align: center;"><%=adBill.panNumber%></td>
+                            <td style="text-align: center;"><%=adBill.gstNumber%></td>
+                            <td style="text-align: center;"><%=adBill.tenderAmount%></td>
+                            <td style="text-align: center;"><%=adBill.retenderAmount%></td>
+                            <td style="text-align: center;"><a
+                                href="/apis/editAdBill/<%=adBill.projectId%>/<%=adBill._id%>"><i
+                                    class="material-icons">edit</i></a></td>
+                            <td style="text-align: center;"><a
+                                    href="/apis/removeAdBill/<%=adBill.projectId%>/<%=adBill._id%>"><i
+                                        class="material-icons">close</i></a></td>
+                        </tr>
+                        <%});%>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <footer class="page-footer" id="footer" style="background-color:#7986cb;">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Rosh
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

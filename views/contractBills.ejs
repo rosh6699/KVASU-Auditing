@@ -1,0 +1,84 @@
+<%- include('partials/header') %>
+<script src="/js/contractBills.js"></script>
+<link rel="stylesheet" href="/css/contractBills.css">
+</head>
+
+<body>
+    <div class="container" id="page-container">
+
+        
+        <div class="section">
+            <form action="/projects/<%=projectId%>/bills/contract" method="POST">
+            <div class="row">
+
+                <div class="input-field col s6 l3 m4">
+                    <input id="contractorName" placeholder="Name" name="contractorName" type="text" class="validate">
+                    <label for="contractorName">Individual/Company</label>
+                </div>
+                <div class="input-field col s6 l3 m4">
+                    <input id="panNumber" placeholder="" name="panNumber" type="text" class="validate">
+                    <label for="panNumber">PAN Number</label>
+                </div>
+                <div class="input-field col s6 l3 m4">
+                    <input id="gstNumber" placeholder="" name="gstNumber" type="text" class="validate">
+                    <label for="gstNumber">GST Number</label>
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit" name="action">Save
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+        <div>
+            <table class="highlight">
+                <thead>
+                    <tr>
+
+                        <th style="text-align: center;">Individual/Company Name</th>
+                        <th style="text-align: center;">PAN Number</th>
+                        <th style="text-align: center;">GST Number</th>
+                        <th style="text-align: center;">Add Bills</th>
+
+
+                       
+
+
+
+
+                    </tr>
+                </thead>
+
+                <tbody class="">
+                    <% contractors.forEach(function(contractor){ %>
+                    <tr>
+                        <td style="text-align: center;"><%=contractor.contractorName%></td>
+                        <td style="text-align: center;"><%=contractor.panNumber%></td>
+                        <td style="text-align: center;"><%=contractor.gstNumber%></td>
+                        <td style="text-align: center;"><a class="btn-floating btn-small waves-effect waves-light orange  " href="/projects/<%=projectId%>/bills/contract/<%=contractor._id%>"><i
+                            class="material-icons">add</i></a></td>
+                     
+
+
+
+
+                    </tr>
+                    <%});%>
+
+                </tbody>
+            </table>
+        </div>
+
+        </div>
+    </div>
+
+
+    <footer class="page-footer" id="footer" style="background-color:#7986cb;">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Rosh
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

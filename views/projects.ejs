@@ -1,0 +1,104 @@
+<%- include('partials/header') %>
+<script src="/js/projects.js"></script>
+<link rel="stylesheet" href="/css/projects.css">
+
+</head>
+
+
+
+
+<body>
+
+
+
+
+    <div class="container" id="page-container">
+
+        <div class="section">
+            <form class="col s12" method="GET" action="/projects/viewBudgets">
+
+                <div class="row">
+                    <h5>Select budget Bill:</h5>
+                    <p>You can fill the following fields to narrow a search.</p>
+                    <div class="input-field col s12 m4 l4" style="padding-top: 7px;">
+                        <select class="" id="step1" name="chosenYear">
+                            <option value="" selected>Choose your option</option>
+                            <option value="2015">2015-2016</option>
+                            <option value="2016">2016-2017</option>
+                            <option value="2017">2017-2018</option>
+                            <option value="2018">2018-2019</option>
+                            <option value="2019">2019-2020</option>
+                            <option value="2020">2020-2021</option>
+                            <option value="2021">2021-2022</option>
+                            <option value="2022">2022-2023</option>
+
+
+
+                        </select>
+                        <label>Year</label>
+                    </div>
+                    <div class="col l4 m4 s12">
+                        <div id="form1" class=" input-field col s12" style="padding-left: 0;padding-top: 7px;">
+
+                            <input type="text" id="chosenUnit" class="autocomplete" name="chosenUnit">
+                            <label for="form1">Select Unit</label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12 l4 m4" style="padding-top: 7px;">
+                        <select class="" id="source" name="source">
+                            <option value="" selected>Choose your option</option>
+                            <option value="STATE PLAN">STATE PLAN</option>
+                            <option value="ICAR">ICAR</option>
+                            <option value="RKVY">RKVY</option>
+                            <option value="RIDF">RIDF</option>
+                            <option value="NABARD">NABARD</option>
+                            <option value="others">others</option>
+
+                        </select>
+                        <label>Source</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light submitbutton" type="submit">Find</button>
+
+            </form>
+
+            <table class="highlight">
+                <thead>
+                    <tr >
+
+                        <th>Financial Year</th>
+                        <th>Order No</th>
+                        <th>Amount</th>
+                        <th>Source</th>
+                        <th>Unit</th>
+                    </tr>
+                </thead>
+
+                <tbody class="">
+                    <% budgets.forEach(function(budget){ %>
+                    <tr onclick="javascript:window.location.href='/projects/<%=budget._id%>'">
+
+                        <td><%=budget.financialYear%></td>
+                        <td><%=budget.orderNo%></td>
+                        <td>&#8377;<%=budget.amount%></td>
+                        <td><%=budget.source%></td>
+                        <td><%=budget.unit%></td>
+                    </tr>
+                    <%});%>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <footer class="page-footer" id="footer" style="background-color:#7986cb;">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Rosh
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

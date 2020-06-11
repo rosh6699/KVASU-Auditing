@@ -1,0 +1,78 @@
+<%- include('partials/header') %>
+<script src="/js/projectEntry.js"></script>
+<link rel="stylesheet" href="/css/projectEntry.css">
+</head>
+
+<body>
+    <div class="container" id="page-container">
+
+        <div class="section">
+
+
+
+
+            <span>Add Project</span>
+            <br><br>
+            <div>
+                <form action="/projects/<%=budgetId %>" id="form1" method="POST">
+                    <div class="row">
+                        <div class="input-field col s6 l3 m4">
+                            <input id="project_name" placeholder="" name="projectName" type="text" class="validate">
+                            <label for="project_name">Project Name</label>
+                        </div>
+
+                    </div>
+
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Save
+                        <i class="material-icons right">send</i>
+                    </button>
+
+                </form>
+
+
+            </div>
+            <table class="highlight">
+                <thead>
+                    <tr>
+
+                        <th style="text-align: center;">Project Name</th>
+                        <th style="text-align: center;">Add Advertisement Charges</th>
+                        <th style="text-align: center;">Add Contract Bills</th>
+
+                    </tr>
+                </thead>
+
+                <tbody class="">
+                    <% projects.forEach(function(project){ %>
+                    <tr>
+
+                        <td style="text-align: center;"><%=project.projectName%></td>
+                        <td style="text-align: center;"> <a class="btn-floating btn-small waves-effect waves-light " href="/projects/<%=project._id%>/bills/ad"><i
+                                    class="material-icons">add</i></a>
+                        </td>
+                        <td style="text-align: center;"> <a class="btn-floating btn-small waves-effect waves-light orange  " href="/projects/<%=project._id%>/bills/contract"><i
+                                    class="material-icons">add</i></a>
+                        </td>
+
+
+                    </tr>
+                    <%});%>
+
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+
+    <footer class="page-footer" id="footer" style="background-color:#7986cb;">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Rosh
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
